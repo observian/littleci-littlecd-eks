@@ -1,0 +1,47 @@
+name: AWS ECR EKS
+author: Observian
+description: Create Docker image from code and push the resulting image to ECR, then to EKS
+inputs:
+  access_key_id:
+    description: The AWS access key id
+    required: true
+  secret_access_key:
+    description: The AWS secret access key
+    required: true
+  account_id:
+    description: AWS Account ID
+    required: true
+  assume_role:
+    description: A role to assume under the account_id account.
+    required: false
+    default: ''
+  repo:
+    description: Name of your ECR repository
+    required: true
+  region:
+    description: The AWS region
+    required: true
+  eks_cluster_name:
+    required: true
+    description: the name of the eks cluster to which this image should be pushed
+  tags:
+    description: Comma-separated string of ECR image tags
+    default: latest
+  dockerfile:
+    description: Name of Dockerfile to use
+    default: Dockerfile
+  path:
+    description: Path to Dockerfile, defaults to the working directory
+    default: .
+  k8s_manifest:
+    description: manifest containing IMAGE_TAG placeholder to apply to the cluster
+    required: true
+  k8s_image_tag:
+    required: true
+    description: the tag for hte k8s manifest to use when it references the repo.
+outputs:
+  image:
+    description: 'The created image name'
+runs:
+  using: docker
+  image: Dockerfile
