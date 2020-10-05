@@ -44,4 +44,4 @@ outputs:
     description: 'The created image name'
 runs:
   using: docker
-  image: observian/ecr-eks-little-ci-little-cd:latest
+  image: docker://observian/ecr-eks-little-ci-little-cd:latest
