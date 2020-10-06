@@ -17,9 +17,8 @@ function main() {
     export AWS_DEFAULT_REGION=$INPUT_REGION
     echo "done"
 
-    
     echo "logging in to ECR and EKS"
-    ecr get-login-password --region $INPUT_REGION  | docker login $INPUT_ACCOUNT_ID.dkr.ecr.$INPUT_REGION.amazonaws.com
+    aws ecr get-login-password --region $INPUT_REGION  | docker login $INPUT_ACCOUNT_ID.dkr.ecr.$INPUT_REGION.amazonaws.com --username AWS --password-stdin
     aws eks update-kubeconfig --name $INPUT_EKS_CLUSTER_NAME --region $INPUT_REGION
     echo "done"
     
@@ -32,10 +31,18 @@ function main() {
     for tag in $TAG_ARGS; do
         #tag many times, but only do the build once
         tag_args="$tag_args -t $ACCOUNT_URL/$INPUT_REPO:$tag"
-
     done
     echo "done"
-    docker build -f $INPUT_DOCKERFILE $tag_args $INPUT_PATH
+
+    local BUILD=$INPUT_BUILD_ARGS
+    local build_args=""
+    local BUILD_ARGS=$(echo $"BUILD" | tr "," "\n")
+
+    for buildarg in $INPUT_BUILD_ARGS; do
+        build_args="$build_args --build-arg $buildarg"
+    done
+
+    docker build -f $INPUT_DOCKERFILE $build_args $tag_args $INPUT_PATH
     #push up each tag
     echo "pushing up all tags"
     for tag in $TAG_ARGS; do
