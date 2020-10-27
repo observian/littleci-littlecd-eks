@@ -1,4 +1,3 @@
-# test
 # ci/cd not CI/CD
 
 ### What it is
