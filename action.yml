@@ -42,8 +42,8 @@ outputs:
   image:
     description: 'The created image name'
 runs:
-  using: docker
-  image: docker://docker.io/Deseret-Mutual-Benefit-Administrators/ecr-eks-little-ci-little-cd:latest
+  using: docker  
+  image: docker://docker.pkg.github.com/deseret-mutual-benefit-administrators/littleci-littlecd-eks/littleci-littlecd-eks:latest
 branding:
   icon: arrow-left-circle
   color: green
