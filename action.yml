@@ -37,7 +37,7 @@ inputs:
     required: true
   k8s_image_tag:
     required: true
-    description: the tag for hte k8s manifest to use when it references the repo.
+    description: the tag for the k8s manifest to use when it references the repo.
 outputs:
   image:
     description: 'The created image name'
