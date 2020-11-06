@@ -43,7 +43,7 @@ outputs:
     description: 'The created image name'
 runs:
   using: docker  
-  image: docker://docker.pkg.github.com/deseret-mutual-benefit-administrators/basic-base-image/basic-base-image:latest
+  image: docker://docker.io/observian/ecr-eks-little-ci-little-cd:latest
 branding:
   icon: arrow-left-circle
   color: green
