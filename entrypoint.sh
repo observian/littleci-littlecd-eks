@@ -40,7 +40,7 @@ function main() {
     local build_args=""
     local BUILD_ARGS=$(echo "$BUILD" | tr "," "\n")
 
-    for buildarg in $INPUT_BUILD_ARGS; do
+    for buildarg in $BUILD_ARGS; do
         build_args="$build_args --build-arg $buildarg"
     done
     echo "done"
