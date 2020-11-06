@@ -9,6 +9,7 @@ function main() {
     validate "${INPUT_ACCOUNT_ID}" "account_id"
     validate "${INPUT_REPO}" "repo"
     validate "${INPUT_EKS_CLUSTER_NAME}" "eks_cluster_name"
+    validate "${INPUT_BUILD_ARGS}" "build-args"
 
     echo "inputs are valid"
     echo "setting up env variables for the build"
