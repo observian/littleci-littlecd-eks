@@ -34,15 +34,16 @@ function main() {
     done
     echo "done"
 
-    echo "setting up build args"
+    echo $INPUT_BUILD_ARGS
     local BUILD=$INPUT_BUILD_ARGS
     local build_args=""
     local BUILD_ARGS=$(echo "$BUILD" | tr "," "\n")
 
     for buildarg in $BUILD_ARGS; do
         build_args="$build_args --build-arg $buildarg"
+        echo "build arg $buildarg"
     done
-    echo "build args are $build_args"
+    echo "done"
 
     docker build -f $INPUT_DOCKERFILE $build_args $tag_args $INPUT_PATH
     #push up each tag
