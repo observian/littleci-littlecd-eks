@@ -34,14 +34,13 @@ function main() {
     done
     echo "done"
 
-    echo $INPUT_BUILD_ARGS
+    echo "preparing build args"
     local BUILD=$INPUT_BUILD_ARGS
     local build_args=""
     local BUILD_ARGS=$(echo "$BUILD" | tr "," "\n")
 
     for buildarg in $BUILD_ARGS; do
         build_args="$build_args --build-arg $buildarg"
-        echo "build arg $buildarg"
     done
     echo "done"
 
