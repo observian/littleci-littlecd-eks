@@ -1,5 +1,5 @@
-name: DMBA AWS ECR EKS
-author: DMBA
+name: AWS ECR EKS
+author: Observian
 description: Create Docker image from code and push the resulting image to ECR, then to EKS
 inputs:
   access_key_id:
