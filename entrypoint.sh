@@ -2,7 +2,7 @@
 set -e
 
 function main() {
-    echo "validating inputs"
+    echo "validating inputs including build args"
     validate "${INPUT_ACCESS_KEY_ID}" "access_key_id"
     validate "${INPUT_SECRET_ACCESS_KEY}" "secret_access_key"
     validate "${INPUT_REGION}" "region"
