@@ -42,7 +42,7 @@ function main() {
     for buildarg in $BUILD_ARGS; do
         build_args="$build_args --build-arg $buildarg"
     done
-    echo "done"
+    echo "build args are $build_args"
 
     docker build -f $INPUT_DOCKERFILE $build_args $tag_args $INPUT_PATH
     #push up each tag
