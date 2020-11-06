@@ -19,6 +19,7 @@ function main() {
 
     echo "logging in to ECR and EKS"
     aws ecr get-login-password --region $INPUT_REGION  | docker login $INPUT_ACCOUNT_ID.dkr.ecr.$INPUT_REGION.amazonaws.com --username AWS --password-stdin
+    aws eks update-kubeconfig --name $INPUT_EKS_CLUSTER_NAME --region $INPUT_REGION
     echo "done"
     
     local TAG=$INPUT_TAGS
@@ -48,6 +49,13 @@ function main() {
         docker push $ACCOUNT_URL/$INPUT_REPO:$tag
     done
     echo "done"
+    export IMAGE_TAG=$INPUT_K8S_IMAGE_TAG
+    echo "substituting image name"
+    envsubst < $INPUT_K8S_MANIFEST > deployment.yml
+    echo "done"
+    echo "applying deployment to $INPUT_EKS_CLUSTER_NAME"
+    kubectl apply -f deployment.yml
+
    
 }
 
