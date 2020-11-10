@@ -23,7 +23,7 @@ inputs:
   tags:
     description: Comma-separated string of ECR image tags
     default: latest
-  build-args:
+  build_args:
     description: comma separated key-value pairs of build arguments to be passed to the docker build
     required: false
   dockerfile:
