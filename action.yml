@@ -28,7 +28,7 @@ inputs:
     required: false
   dockerfile:
     description: Name of Dockerfile to use
-    default: Dockerfile
+    default: docker://ghcr.io/deseret-mutual-benefit-administrators/littleci-littlecd-eks:latest
   path:
     description: Path to Dockerfile, defaults to the working directory
     default: .
