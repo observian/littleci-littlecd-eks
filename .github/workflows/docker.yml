@@ -10,8 +10,8 @@ jobs:
       - name: Push to GitHub Image Repo
         uses: docker/build-push-action@v1
         with:
-          username: ${​​​​{​​​​ github.repository_owner }​​​​}​​​​
-          password: ${​​​​{​​​​ secrets.ORG_WIDE_ARTIFACT_TOKEN }​​​​}​​​​
+          username: "dmbajoe"
+          password: ${​​​​{​​​​ secrets.GHCR_TOKEN }​​​​}​​​​
           registry: ghcr.io
           repository: deseret-mutual-benefit-administrators/littleci-littlecd-eks/littleci-littlecd-eks
           tag_with_ref: true
