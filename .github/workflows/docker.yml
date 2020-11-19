@@ -18,7 +18,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.ORG_WIDE_ARTIFACT_TOKEN }}
       - name: Push to GitHub Image Repo
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
           context: .
           file: ./Dockerfile
