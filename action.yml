@@ -28,7 +28,7 @@ inputs:
     required: false
   dockerfile:
     description: Name of Dockerfile to use
-    default: docker://ghcr.io/deseret-mutual-benefit-administrators/littleci-littlecd-eks:latest
+    default: Dockerfile
   path:
     description: Path to Dockerfile, defaults to the working directory
     default: .
@@ -43,7 +43,7 @@ outputs:
     description: 'The created image name'
 runs:
   using: docker  
-  image: Dockerfile
+  image: docker://ghcr.io/deseret-mutual-benefit-administrators/littleci-littlecd-eks:latest
 branding:
   icon: arrow-left-circle
   color: green
