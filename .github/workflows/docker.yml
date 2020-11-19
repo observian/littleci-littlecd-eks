@@ -2,18 +2,20 @@ name: Publish Docker image
 on: push
 jobs:
   push_to_registry: 
-    name: Push Docker image to GitHub Packages
+    name: Push Docker image to GitHub Image Repo
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-      - name: Push to GitHub Packages
+      - name: Login to GitHub Container Registryuses: docker/login-action@v1 
+        with:
+          registry: ghcr.io
+          username: ${​​​​​{​​​​​ github.repository_owner }​​​​​}
+          ​​​​​password: ${​​​​​{​​​​​ secrets.ORG_WIDE_ARTIFACT_TOKEN }​​​​​}​​​​​
+      - name: Push to GitHub Image Repo
         uses: docker/build-push-action@v1
         with:
-          username: ${​​​​{​​​​ github.actor }​​​​}​​​​
-          password: ${​​​​{​​​​ secrets.GITHUB_TOKEN }​​​​}​​​​
-          registry: ghcr.io
-          repository: deseret-mutual-benefit-administrators/littleci-littlecd-eks/littleci-littlecd-eks
+          push: true
           tag_with_ref: true
           tag_with_sha: true
           build_args: NUGET_USERNAME=${​​​​{​​​​ github.actor }​​​​}​​​​,NUGET_API_KEY=${​​​​{​​​​ secrets.ORG_WIDE_ARTIFACT_TOKEN }​​​​}​​​​
