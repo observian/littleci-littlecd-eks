@@ -22,6 +22,6 @@ jobs:
         with:
           push: true
           tags: |
-            ghcr.io/Deseret-Mutual-Benefit-Administrators/littleci-littlecd-eks:latest
-            ghcr.io/Deseret-Mutual-Benefit-Administrators/littleci-littlecd-eks:1.0.0.${{ github.run_number }}
-            ghcr.io/Deseret-Mutual-Benefit-Administrators/littleci-littlecd-eks:${{ github.sha }} 
+            ghcr.io/deseret-mutual-benefit-administrators/littleci-littlecd-eks:latest
+            ghcr.io/deseret-mutual-benefit-administrators/littleci-littlecd-eks:1.0.0.${{ github.run_number }}
+            ghcr.io/deseret-mutual-benefit-administrators/littleci-littlecd-eks:${{ github.sha }} 
