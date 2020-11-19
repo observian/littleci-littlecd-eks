@@ -11,7 +11,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: "dmbajoe"
           password: ${​​​​​{​​​​​ secrets.GHCR_TOKEN }​​​​​}​​​​​
       - name: Push to GitHub Image Repo
         uses: docker/build-push-action@v1
