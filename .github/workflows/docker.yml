@@ -27,4 +27,3 @@ jobs:
           tags: |
             ghcr.io/user/app:latest
             ghcr.io/user/app:1.0.0.${{ github.sha }}
-          build_args: NUGET_USERNAME=${​​​​{​​​​ github.actor }​​​​}​​​​,NUGET_API_KEY=${​​​​{​​​​ secrets.ORG_WIDE_ARTIFACT_TOKEN }​​​​}​​​​
