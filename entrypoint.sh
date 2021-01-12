@@ -7,6 +7,7 @@ function main() {
     validate "${INPUT_SECRET_ACCESS_KEY}" "secret_access_key"
     validate "${INPUT_REGION}" "region"
     validate "${INPUT_ACCOUNT_ID}" "account_id"
+    validate "${INPUT_CERTIFICATE_ARN}" "certificate_arn"
     validate "${INPUT_REPO}" "repo"
     validate "${INPUT_EKS_CLUSTER_NAME}" "eks_cluster_name"
 
