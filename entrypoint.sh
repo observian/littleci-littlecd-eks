@@ -43,6 +43,8 @@ function main() {
         build_args="$build_args --build-arg $buildarg"
     done
 
+    echo 'Before build' $(pwd)
+
     echo "running docker build -f $INPUT_DOCKERFILE $build_args $tag_args $INPUT_PATH"
     docker build -f $INPUT_DOCKERFILE $build_args $tag_args $INPUT_PATH
     #push up each tag
@@ -55,6 +57,7 @@ function main() {
     echo "substituting image name"
     echo "done"
     echo "applying deployment to $INPUT_EKS_CLUSTER_NAME"
+    echo "Before kustomize" $(pwd)
     kustomize build $OVERLAY_PATH | kubectl apply -f -
 }
 
