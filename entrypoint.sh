@@ -9,7 +9,6 @@ function main() {
     validate "${INPUT_ACCOUNT_ID}" "account_id"
     validate "${INPUT_REPO}" "repo"
     validate "${INPUT_EKS_CLUSTER_NAME}" "eks_cluster_name"
-    validate "${INPUT_KUSTOMIZE_OVERLAY_DIR}" "kustomize_overlay_dir"
 
     echo "inputs are valid"
     echo "setting up env variables for the build"
@@ -53,10 +52,10 @@ function main() {
     echo "done"
     export IMAGE_TAG=$INPUT_K8S_IMAGE_TAG
     echo "substituting image name"
-    envsubst < $INPUT_K8S_MANIFEST > deployment.yml
+    envsubst < $OVERLAY_PATH > deployment.yml
     echo "done"
     echo "applying deployment to $INPUT_EKS_CLUSTER_NAME"
-    kustomize build ./$INPUT_KUSTOMIZE_OVERLAY_DIR | kubectl apply -f -
+    kustomize build $OVERLAY_PATH | kubectl apply -f -
 }
 
 function validate() {
