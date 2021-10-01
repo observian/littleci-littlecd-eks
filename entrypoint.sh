@@ -9,6 +9,7 @@ function main() {
     validate "${INPUT_ACCOUNT_ID}" "account_id"
     validate "${INPUT_REPO}" "repo"
     validate "${INPUT_EKS_CLUSTER_NAME}" "eks_cluster_name"
+    validate "${INPUT_KUSTOMIZE_OVERLAY_DIR}" "kustomize_overlay_dir"
 
     echo "inputs are valid"
     echo "setting up env variables for the build"
@@ -21,7 +22,7 @@ function main() {
     aws ecr get-login-password --region $INPUT_REGION  | docker login $INPUT_ACCOUNT_ID.dkr.ecr.$INPUT_REGION.amazonaws.com --username AWS --password-stdin
     aws eks update-kubeconfig --name $INPUT_EKS_CLUSTER_NAME --region $INPUT_REGION
     echo "done"
-    
+
     local TAG=$INPUT_TAGS
     local tag_args=""
     local TAG_ARGS=$(echo "$TAG" | tr "," "\n")
@@ -55,9 +56,7 @@ function main() {
     envsubst < $INPUT_K8S_MANIFEST > deployment.yml
     echo "done"
     echo "applying deployment to $INPUT_EKS_CLUSTER_NAME"
-    kubectl apply -f deployment.yml
-
-   
+    kustomize build ./$INPUT_KUSTOMIZE_OVERLAY_DIR | kubectl apply -f -
 }
 
 function validate() {

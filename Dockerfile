@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y ca-certificates apt-transport-https gnu
     stable" && \
     apt-get update -y && \
     apt-get install -y kubectl awscli gettext docker-ce docker-ce-cli containerd.io
+RUN curl -s https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh && chmod +x kustomize && mv ./kustomize /bin
 WORKDIR /app
 COPY entrypoint.sh .
 RUN chmod +x ./entrypoint.sh
