@@ -21,4 +21,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: observian/ecr-eks-little-ci-little-cd:kustomize
+          tags: observian/ecr-eks-little-ci-little-cd:latest
