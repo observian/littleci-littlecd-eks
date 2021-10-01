@@ -60,7 +60,7 @@ function main() {
     echo "applying deployment to $INPUT_EKS_CLUSTER_NAME"
     echo "Before kustomize" $(pwd)
     ls
-    kustomize build $OVERLAY_PATH | kubectl apply -f -
+    kustomize build $INPUT_OVERLAY_PATH | kubectl apply -f -
 }
 
 function validate() {
