@@ -58,7 +58,7 @@ function main() {
     echo "substituting image name"
     echo "done"
     echo "applying deployment to $INPUT_EKS_CLUSTER_NAME"
-    envsubst < ${INPUT_OVERLAY_PATH}/deployment.yml tmp.yml
+    envsubst < ${INPUT_OVERLAY_PATH}/deployment.yml > tmp.yml
     mv tmp.yml ${INPUT_OVERLAY_PATH}/deployment.yml
     kustomize build $INPUT_OVERLAY_PATH | kubectl apply -f -
 }
