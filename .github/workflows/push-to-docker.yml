@@ -1,5 +1,9 @@
 name: ci
-on: push
+on:
+  push:
+    branches:
+      - kustomize
+
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -21,4 +25,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: observian/ecr-eks-little-ci-little-cd:latest
+          tags: observian/ecr-eks-little-ci-little-cd:kustomize

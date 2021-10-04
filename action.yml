@@ -32,8 +32,8 @@ inputs:
   path:
     description: Path to Dockerfile, defaults to the working directory
     default: .
-  k8s_manifest:
-    description: manifest containing IMAGE_TAG placeholder to apply to the cluster
+  overlay_path:
+    description: The path to the environment kustomize directory to be built
     required: true
   k8s_image_tag:
     required: true
@@ -43,7 +43,7 @@ outputs:
     description: 'The created image name'
 runs:
   using: docker
-  image: docker://docker.io/observian/ecr-eks-little-ci-little-cd:latest
+  image: docker://docker.io/observian/ecr-eks-little-ci-little-cd:kustomize
 branding:
   icon: arrow-left-circle
   color: green
