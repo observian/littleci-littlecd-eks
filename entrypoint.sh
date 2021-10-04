@@ -57,9 +57,9 @@ function main() {
     export IMAGE_TAG=$INPUT_K8S_IMAGE_TAG
     echo "substituting image name"
     echo "done"
+    sed -i "s/'${IMAGE_TAG}'/$tag" ${INPUT_OVERLAY_PATH}/deployment
     echo "applying deployment to $INPUT_EKS_CLUSTER_NAME"
-    echo "Before kustomize" $(pwd)
-    ls
+
     kustomize build $INPUT_OVERLAY_PATH | kubectl apply -f -
 }
 
