@@ -2,7 +2,7 @@
 # ci/cd not CI/CD
 
 ### What it is
-This github action is intended to get you up and running quickly so you can test out your integration environment before you've had a chance to set up unit testing and other checks to make sure your code works.
+This github action is intended to get you up and running quickly so you can test out your integration environment before you've had a chance to set up unit testing and other checks to make sure your code works.  Please note that we now have a version that works with Kustomize (see the kustomize branch of this repo)
 
 ### What it is not
 It is not a production-class action that will help you harden your code and protect your production environment from botched code.  If you check it in, it will deploy whether the code is good or not.
