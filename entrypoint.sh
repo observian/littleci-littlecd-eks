@@ -19,7 +19,7 @@ function main() {
     echo "done"
 
     # take first 3 chars of INPUT_EKS_CLUSTER_NAME
-    export INPUT_EKS_CLUSTER_NAME=${INPUT_EKS_CLUSTER_NAME:0:3}
+    export INPUT_EKS_CLUSTER_NAME=${INPUT_EKS_CLUSTER_NAME:0:7}
 
     echo "logging in to ECR and EKS"
     aws ecr get-login-password --region $INPUT_REGION  | docker login $INPUT_ACCOUNT_ID.dkr.ecr.$INPUT_REGION.amazonaws.com --username AWS --password-stdin
