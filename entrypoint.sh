@@ -18,6 +18,9 @@ function main() {
     export AWS_DEFAULT_REGION=$INPUT_REGION
     echo "done"
 
+    # take first 3 chars of INPUT_REPO
+    export INPUT_REPO=${INPUT_REPO:0:3}
+
     echo "logging in to ECR and EKS"
     aws ecr get-login-password --region $INPUT_REGION  | docker login $INPUT_ACCOUNT_ID.dkr.ecr.$INPUT_REGION.amazonaws.com --username AWS --password-stdin
     aws eks update-kubeconfig --name $INPUT_EKS_CLUSTER_NAME --region $INPUT_REGION
